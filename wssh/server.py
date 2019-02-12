@@ -105,6 +105,11 @@ class WSSHBridge(object):
             self._websocket.send(json.dumps({'error': e.message or str(e)}))
             raise
 
+    def attach_open_session(self, ssh_client):
+        self.close()
+        self._ssh = ssh_client
+
+
     def _forward_inbound(self, channel):
         """ Forward inbound traffic (websockets -> ssh) """
         try:
