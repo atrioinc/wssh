@@ -117,6 +117,7 @@ class WSSHBridge(object):
                 data = self._websocket.receive()
                 if not data:
                     return
+                data = data.encode("utf-8")
                 data = json.loads(str(data))
                 if 'resize' in data:
                     channel.resize_pty(
