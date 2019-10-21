@@ -24,8 +24,10 @@ try:
 except ImportError:
     import json
 
-from StringIO import StringIO
-
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
 
 class WSSHBridge(object):
     """ WebSocket to SSH Bridge Server """
